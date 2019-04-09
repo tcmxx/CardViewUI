@@ -7,6 +7,13 @@ public class CardUIIllustration : MonoBehaviour
 {
     [SerializeField]
     protected Image imageUiRef;
+    [SerializeField]
+    protected Material highlightMaterial;
+
+    protected CardUIBase uiBaseRef;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,13 +26,15 @@ public class CardUIIllustration : MonoBehaviour
         
     }
 
-    public void Initialize(CardInfo info)
+    public void Initialize(CardInfo info, CardUIBase uiBase)
     {
+        uiBaseRef = uiBase;
         imageUiRef.sprite = info.cardSprite;
     }
 
     public void SetHighlight(bool highlight)
     {
-
+        imageUiRef.material = highlight?highlightMaterial:null;
     }
+    
 }
